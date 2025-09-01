@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: wedding-website
+    runtime: static
+    plan: free
+    buildCommand: |
+      npm install --legacy-peer-deps
+      npm run build
+      cp -r out/* .
+    envVars:
+      - key: COUPLE_EMAIL
+        value: wong.jennicaarah@gmail.com
+    healthCheckPath: /
+    autoDeploy: true
